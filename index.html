@@ -80,8 +80,8 @@
       <div class="cta">
         <a href="#projects" class="btn btn-primary magnetic">View my work
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a href="assets/Uzzal_Biswas_CV.pdf" id="cvBtn" class="btn btn-ghost magnetic" download>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg> Download CV</a>
+        <button type="button" id="cvBtn" class="btn btn-ghost magnetic" aria-haspopup="dialog" aria-controls="resumeModal">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> View Resume</button>
       </div>
       <div class="social" data-socials></div>
     </div>
@@ -169,7 +169,15 @@
 <!-- RESUME: EXPERIENCE + EDUCATION -->
 <section id="experience" class="alt">
   <div class="wrap">
-    <div class="head rv"><span class="eyebrow">Resume</span><h2>Experience &amp; <span class="grad">education</span></h2></div>
+    <div class="head rv">
+      <span class="eyebrow">Resume</span>
+      <h2>Experience &amp; <span class="grad">education</span></h2>
+      <div style="margin-top:14px">
+        <button type="button" class="btn btn-ghost btn-sm magnetic" data-open-resume>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> View Full Resume (PDF)
+        </button>
+      </div>
+    </div>
     <div class="resume-grid">
       <div>
         <h3 class="col-t rv"><span>💼</span> Work experience</h3>
@@ -252,6 +260,37 @@
 <dialog id="modal" class="modal">
   <button class="modal-x" id="modalX" aria-label="Close">×</button>
   <div class="modal-body" id="modalBody"></div>
+</dialog>
+
+<dialog id="resumeModal" class="resume-modal" aria-labelledby="resumeModalTitle">
+  <div class="resume-modal-header">
+    <div class="resume-modal-title" id="resumeModalTitle">
+      <span class="resume-doc-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </span>
+      <div>
+        <strong>Uzzal Biswas — Resume</strong>
+        <span class="resume-file-info">Flutter Developer · Curriculum Vitae</span>
+      </div>
+    </div>
+    <div class="resume-modal-actions">
+      <a href="assets/Uzzal_Biswas_CV.pdf" download="Uzzal_Biswas_CV.pdf" id="resumeDlBtn" class="btn btn-primary btn-sm" title="Download PDF to your device">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+        <span>Download PDF</span>
+      </a>
+      <a href="assets/Uzzal_Biswas_CV.pdf" target="_blank" rel="noopener" id="resumeExtBtn" class="btn btn-ghost btn-sm resume-tab-btn" title="Open PDF in new tab">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        <span>New Tab</span>
+      </a>
+      <button type="button" class="resume-modal-close" id="resumeModalClose" aria-label="Close resume viewer">×</button>
+    </div>
+  </div>
+  <div class="resume-modal-body">
+    <iframe id="resumeFrame" src="" title="Uzzal Biswas Resume" class="resume-iframe"></iframe>
+  </div>
+  <div class="resume-modal-footer">
+    <span>💡 Tip: You can view, scroll, zoom, or click <strong>Download PDF</strong> to save a copy.</span>
+  </div>
 </dialog>
 
 <script src="js/config.js"></script>

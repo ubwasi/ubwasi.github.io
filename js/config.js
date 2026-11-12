@@ -8,7 +8,7 @@ window.SITE = {
   phone: "01827279076",
   phoneIntl: "+8801827279076",
 
-  /* "Download CV" button. Put your public CV in /assets and set its name here. */
+  /* "View Resume" modal & CV file. Put your public CV in /assets and set its name here. */
   cvFile: "assets/Uzzal_Biswas_CV.pdf",
 
   /* ---------- CONTACT FORM ----------

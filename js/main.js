@@ -84,8 +84,69 @@
   }).join('');
   $$('[data-socials]').forEach(function (el) { el.innerHTML = socialHTML; });
 
-  /* ---------- CV link ---------- */
-  var cvBtn = $('#cvBtn'); if (cvBtn && S.cvFile) cvBtn.setAttribute('href', S.cvFile);
+  /* ---------- resume viewer modal ---------- */
+  var resumeModal = $('#resumeModal');
+  var resumeFrame = $('#resumeFrame');
+  var resumeDlBtn = $('#resumeDlBtn');
+  var resumeExtBtn = $('#resumeExtBtn');
+  var cvFile = S.cvFile || 'assets/Uzzal_Biswas_CV.pdf';
+
+  if (resumeDlBtn) resumeDlBtn.setAttribute('href', cvFile);
+  if (resumeExtBtn) resumeExtBtn.setAttribute('href', cvFile);
+
+  function openResume() {
+    if (!resumeModal) return;
+    if (resumeFrame && (!resumeFrame.getAttribute('src') || resumeFrame.getAttribute('src') === 'about:blank')) {
+      resumeFrame.setAttribute('src', cvFile);
+    }
+    if (typeof resumeModal.showModal === 'function') {
+      resumeModal.showModal();
+    } else {
+      resumeModal.setAttribute('open', '');
+    }
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeResume() {
+    if (!resumeModal) return;
+    if (typeof resumeModal.close === 'function') {
+      resumeModal.close();
+    } else {
+      resumeModal.removeAttribute('open');
+    }
+    document.body.style.overflow = '';
+  }
+
+  var cvBtn = $('#cvBtn');
+  if (cvBtn) {
+    cvBtn.removeAttribute('download');
+    cvBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      openResume();
+    });
+  }
+
+  var resumeModalClose = $('#resumeModalClose');
+  if (resumeModalClose) resumeModalClose.addEventListener('click', closeResume);
+
+  if (resumeModal) {
+    resumeModal.addEventListener('click', function (e) {
+      if (e.target === resumeModal) closeResume();
+    });
+    resumeModal.addEventListener('close', function () {
+      document.body.style.overflow = '';
+    });
+    resumeModal.addEventListener('cancel', function () {
+      document.body.style.overflow = '';
+    });
+  }
+
+  $$('[data-open-resume]').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      openResume();
+    });
+  });
 
   /* ---------- marquee + chips ---------- */
   var tr = $('#track');
